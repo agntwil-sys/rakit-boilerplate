@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
+/*
+  Design tokens for this boilerplate.
+  Shape lock: buttons/pills use full radius, everything else (cards, inputs,
+  panels) uses --radius. Do not introduce a third radius scale.
+  Theme: system preference (prefers-color-scheme), off-black/off-white base,
+  single accent (electric blue). Keep it that way across generated pages
+  unless the project brief explicitly calls for a different palette.
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --muted-foreground: #52525b;
+  --card: #ffffff;
+  --border: #e4e4e7;
+  --accent: #2563eb;
+  --accent-foreground: #fafafa;
+  --radius: 0.75rem;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --radius-default: var(--radius);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #09090b;
+    --foreground: #fafafa;
+    --muted: #a1a1aa;
+    --muted-foreground: #d4d4d8;
+    --card: #18181b;
+    --border: #27272a;
+    --accent: #3b82f6;
+    --accent-foreground: #09090b;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
